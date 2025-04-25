@@ -1,7 +1,7 @@
 # Alexandria O'Mara
-# Welcome to rock paper scissors!
-# The comments (in green) will guide you through what does what.
-# Enjoy and happy coding!
+# Welcome to rock paper scissors
+# The comments will guide you through what does what.
+# Enjoy and happy coding
 
 # Importing random (used here to generate random integers) and time (for delayed actions)
 import random
