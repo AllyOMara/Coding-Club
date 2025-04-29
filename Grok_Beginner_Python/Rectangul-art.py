@@ -2,7 +2,6 @@ from turtle import
 
 # Defining the function draw_rect to draw a rectangle
 def draw_rect(width, height, colour):
-  # Finish the function to draw a rectangle:
   pensize(3)
   colour = pencolour(colour)
   forward(width)
