@@ -14,12 +14,10 @@ FPS = 20
 screen.fill(BLACK)
 pygame.display.set_caption("Pong")
 running = True
-dt = 0
 
 # Player positions
 player_1_x = 20
 player_1_y = 150
-
 
 # Game loop
 while running:
@@ -33,11 +31,8 @@ while running:
                 player_1_y = player_1_y + 50
         elif event.type == pygame.QUIT:
             running = False
-    
     screen.fill(BLACK)
-
     pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 200))
- 
     pygame.display.flip()
     clock.tick(FPS)
 
