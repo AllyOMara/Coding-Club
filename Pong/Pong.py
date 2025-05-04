@@ -6,33 +6,39 @@ pygame.init()
 BLACK = (0,  0,  0)
 WHITE = (255,255,255)
 
-# Screen setup
+# Setup
 size = (800,500)
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 FPS = 20
 screen.fill(BLACK)
 pygame.display.set_caption("Pong")
+running = True
+dt = 0
 
-def draw_player_1(width, height, x, y):
-    pygame.draw.rect(screen, WHITE, (width, height, x, y))
-    for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
-                y = y + 100
-                pygame.display.update()
-            if event.key == pygame.K_DOWN:
-                y = y - 100
-                pygame.display.update()
+# Player positions
+player_1_x = 20
+player_1_y = 150
+
 
 # Game loop
-while True:
-    clock.tick(FPS)
+while running:
     for event in pygame.event.get():
-        draw_player_1(30,200,20,125)
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                pygame.quit()
+                running = False
+            if event.key == pygame.K_UP:
+                player_1_y = player_1_y - 50
+            if event.key == pygame.K_DOWN:
+                player_1_y = player_1_y + 50
+        elif event.type == pygame.QUIT:
+            running = False
+    
+    screen.fill(BLACK)
 
-    pygame.draw.rect(screen, WHITE, (750,200,20,125))
-    pygame.display.update()
+    pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 200))
+ 
+    pygame.display.flip()
+    clock.tick(FPS)
+
+pygame.quit()
