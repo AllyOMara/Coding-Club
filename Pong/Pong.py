@@ -26,9 +26,15 @@ while running:
             if event.key == pygame.K_ESCAPE:
                 running = False
             if event.key == pygame.K_UP:
-                player_1_y = player_1_y - player_move_units
+                if player_1_y < 0:
+                    player_1_y == player_1_y
+                elif player_1_y > 0:
+                    player_1_y = player_1_y - player_move_units
             if event.key == pygame.K_DOWN:
-                player_1_y = player_1_y + player_move_units
+                if player_1_y > 300:
+                    player_1_y = player_1_y
+                elif player_1_y < 300:
+                    player_1_y = player_1_y + player_move_units
         elif event.type == pygame.QUIT:
             running = False
     screen.fill(BLACK)
