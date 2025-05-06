@@ -18,6 +18,8 @@ running = True
 # Player positions
 player_1_y = 150
 player_move_units = 50
+player_1_up = pygame.K_UP
+player_1_down = pygame.K_DOWN
 
 # Game loop
 while running:
@@ -25,12 +27,12 @@ while running:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 running = False
-            if event.key == pygame.K_UP:
+            if event.key == player_1_up:
                 if player_1_y < 0:
                     player_1_y == player_1_y
                 elif player_1_y > 0:
                     player_1_y = player_1_y - player_move_units
-            if event.key == pygame.K_DOWN:
+            if event.key == player_1_down:
                 if player_1_y > 300:
                     player_1_y = player_1_y
                 elif player_1_y < 300:
