@@ -13,7 +13,6 @@ screen.fill(BLACK)
 pygame.display.set_caption("Pong")
 # Misc
 running = True
-clock = pygame.time.Clock()
 FPS = 20
 player_move_units = 50
 
@@ -64,6 +63,7 @@ while running:
     screen.fill(BLACK)
 
     # Drawing the players
+    clock = pygame.time.Clock()
     pygame.draw.rect(screen, WHITE, (20, player_1_y, 20, 200))
     pygame.draw.rect(screen, WHITE, (760, player_2_y, 20, 200))
     pygame.display.flip()
