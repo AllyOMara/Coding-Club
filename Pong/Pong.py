@@ -2,7 +2,6 @@ import sys, pygame
 import pygame.font
 pygame.init()
 
-# Setup
 # Colours
 BLACK = (0,  0,  0)
 WHITE = (255,255,255)
@@ -11,12 +10,6 @@ size = (800,500)
 screen = pygame.display.set_mode(size)
 screen.fill(BLACK)
 pygame.display.set_caption("Pong")
-# Misc
-running = True
-FPS = 20
-player_move_units = 50
-lower_bound = 350
-upper_bound = 0
 # Player 1
 player_1_y = 150
 player_1_x = 20
@@ -27,6 +20,12 @@ player_2_y = 150
 player_2_x = 760
 player_2_up = pygame.K_UP
 player_2_down = pygame.K_DOWN
+# Misc
+running = True
+FPS = 20
+player_move_units = 50
+lower_bound = 350
+upper_bound = 0
 
 # Game loop
 while running:
