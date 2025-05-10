@@ -17,7 +17,6 @@ FPS = 20
 player_move_units = 50
 lower_bound = 350
 upper_bound = 0
-
 # Player 1
 player_1_y = 150
 player_1_x = 20
@@ -33,11 +32,10 @@ player_2_down = pygame.K_DOWN
 while running:
 
     for event in pygame.event.get():
-
+        # Quit key (esc)
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 running = False
-
             # Moving player 1
             if event.key == player_1_up:
                 if player_1_y < upper_bound:
@@ -61,6 +59,7 @@ while running:
                 elif player_2_y < lower_bound:
                     player_2_y = player_2_y + player_move_units
 
+        # Quits when the user presses the close button (x)
         elif event.type == pygame.QUIT:
             running = False
 
