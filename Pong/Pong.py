@@ -15,13 +15,17 @@ pygame.display.set_caption("Pong")
 running = True
 FPS = 20
 player_move_units = 50
+lower_bound = 350
+upper_bound = 0
 
 # Player 1
 player_1_y = 150
+player_1_x = 20
 player_1_up = pygame.K_w
 player_1_down = pygame.K_s
 # Player 2
 player_2_y = 150
+player_2_x = 760
 player_2_up = pygame.K_UP
 player_2_down = pygame.K_DOWN
 
@@ -36,25 +40,25 @@ while running:
 
             # Moving player 1
             if event.key == player_1_up:
-                if player_1_y < 0:
+                if player_1_y < upper_bound:
                     player_1_y == player_1_y
-                elif player_1_y > 0:
+                elif player_1_y > upper_bound:
                     player_1_y = player_1_y - player_move_units
             if event.key == player_1_down:
-                if player_1_y > 300:
+                if player_1_y > lower_bound:
                     player_1_y = player_1_y
-                elif player_1_y < 300:
+                elif player_1_y < lower_bound:
                     player_1_y = player_1_y + player_move_units
             # Moving player 2
             if event.key == player_2_up:
-                if player_2_y < 0:
+                if player_2_y < upper_bound:
                     player_2_y == player_2_y
-                elif player_2_y > 0:
+                elif player_2_y > upper_bound:
                     player_2_y = player_2_y - player_move_units
             if event.key == player_2_down:
-                if player_2_y > 300:
+                if player_2_y > lower_bound:
                     player_2_y = player_2_y
-                elif player_2_y < 300:
+                elif player_2_y < lower_bound:
                     player_2_y = player_2_y + player_move_units
 
         elif event.type == pygame.QUIT:
@@ -64,8 +68,8 @@ while running:
 
     # Drawing the players
     clock = pygame.time.Clock()
-    pygame.draw.rect(screen, WHITE, (20, player_1_y, 20, 200))
-    pygame.draw.rect(screen, WHITE, (760, player_2_y, 20, 200))
+    pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
+    pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
     pygame.display.flip()
     clock.tick(FPS)
 
