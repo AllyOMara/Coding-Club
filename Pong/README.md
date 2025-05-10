@@ -1,6 +1,6 @@
 ## Welcome to Pong, recreated in Pygame
 
-**Pong is currently in development**
+# ~**Pong is currently in development**~
 
 
 So far the following has been done:
