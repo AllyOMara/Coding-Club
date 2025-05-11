@@ -1,5 +1,6 @@
 import sys, pygame
 import pygame.font
+import random
 pygame.init()
 
 # Colours
@@ -70,7 +71,7 @@ while running:
     pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
     # Drawing the ball
     pygame.draw.rect(screen, WHITE, (385, 235 , 30, 30))
-    
+
     pygame.display.flip()
     clock.tick(FPS)
 
