@@ -68,6 +68,9 @@ while running:
     clock = pygame.time.Clock()
     pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
     pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
+    # Drawing the ball
+    pygame.draw.rect(screen, WHITE, (385, 235 , 30, 30))
+    
     pygame.display.flip()
     clock.tick(FPS)
 
