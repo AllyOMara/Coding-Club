@@ -1,16 +1,16 @@
-import sys, pygame
-import pygame.font
-import random
+import pygame
 pygame.init()
 
 # Colours
-BLACK = (0,  0,  0)
-WHITE = (255,255,255)
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
 # Display
-size = (800,500)
-screen = pygame.display.set_mode(size)
+screen_size = (800,500)
+screen = pygame.display.set_mode(screen_size)
 screen.fill(BLACK)
 pygame.display.set_caption("Pong")
+lower_bound = 350
+upper_bound = 0
 # Player 1
 player_1_y = 150
 player_1_x = 20
@@ -25,8 +25,6 @@ player_2_down = pygame.K_DOWN
 running = True
 FPS = 20
 player_move_units = 50
-lower_bound = 350
-upper_bound = 0
 
 # Game loop
 while running:
@@ -69,10 +67,9 @@ while running:
     clock = pygame.time.Clock()
     pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
     pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
-    # Drawing the ball
-    pygame.draw.rect(screen, WHITE, (385, 235 , 30, 30))
-
     pygame.display.flip()
+
     clock.tick(FPS)
 
+# Quits the game if running = False
 pygame.quit()
