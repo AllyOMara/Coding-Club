@@ -1,4 +1,5 @@
 import pygame
+import random
 pygame.init()
 
 # Colours
@@ -32,6 +33,14 @@ FPS = 40
 player_move_units = 50
 player_turn = "left"
 ball_y_direction = "down"
+
+# Starting direction
+ball_start_side = random.randint(1,2)
+if ball_start_side == 1:
+    player_turn = "left"
+if ball_start_side == 2:
+    player_turn = "right"
+
 
 # Game loop
 while running:
@@ -67,6 +76,7 @@ while running:
         elif event.type == pygame.QUIT:
             running = False
     
+    # Moving the ball
     if ball_y_direction == "up":
         if ball_y > 0:
             ball_y = ball_y - ball_speed
@@ -79,14 +89,11 @@ while running:
         elif ball_y >= 470:
             ball_y = ball_y - ball_speed
             ball_y_direction = "up"
-
-
     if player_turn == "left":
         if ball_x > 0:
             ball_x = ball_x - ball_speed
         elif ball_x <= 0:
             player_turn = "right"
-
     elif player_turn == "right":
         if ball_x < 770:
             ball_x = ball_x + ball_speed
