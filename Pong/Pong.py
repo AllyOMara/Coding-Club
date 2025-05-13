@@ -96,9 +96,7 @@ while running:
     screen.fill(BLACK)
     
     # Drawing the midpoint line
-    pygame.draw.rect(screen, GREY, (385, 0, 20, 70))
-    pygame.draw.rect(screen, GREY, (385, 130, 20, 70))
-    pygame.draw.rect(screen, GREY, (385, 260, 20, 70))
+    pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
 
     # Drawing the players
     clock = pygame.time.Clock()
