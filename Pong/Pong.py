@@ -40,6 +40,9 @@ fpsClock = pygame.time.Clock()
 player_move_units = 50
 ball_y_direction = "down"
 start = False
+font = pygame.font.Font(None, 60)
+starting_text = font.render("Press any button to start", True, (255, 255, 255))
+text_rect = starting_text.get_rect(center=(400, 400))
 
 # Game loop
 while running:
@@ -56,6 +59,11 @@ while running:
         # Drawing the ball
         pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
         pygame.display.flip()
+        # Displaying the text
+        screen.blit(starting_text, text_rect)
+        pygame.display.flip()
+
+
         fpsClock.tick(FPS) 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
