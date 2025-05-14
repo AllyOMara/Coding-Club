@@ -42,7 +42,10 @@ ball_y_direction = "down"
 start = False
 font = pygame.font.Font(None, 60)
 starting_text = font.render("Press any button to start", True, (255, 255, 255))
-text_rect = starting_text.get_rect(center=(400, 400))
+fullscreen_reminder = font.render("Press ctrl to toggle fullscreen", True, (255, 255, 255))
+text_rect_starter = starting_text.get_rect(center=(400, 400))
+text_rect_reminder = fullscreen_reminder.get_rect(center=(400, 450))
+
 
 # Game loop
 while running:
@@ -60,17 +63,20 @@ while running:
         pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
         pygame.display.flip()
         # Displaying the text
-        screen.blit(starting_text, text_rect)
+        screen.blit(starting_text, text_rect_starter)
+        screen.blit(fullscreen_reminder, text_rect_reminder)
+
         pygame.display.flip()
+        fpsClock.tick(FPS)
 
-
-        fpsClock.tick(FPS) 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
+                elif event.key == pygame.K_LCTRL:
+                    pygame.display.toggle_fullscreen()
                 else:
                     start = True
 
