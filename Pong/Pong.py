@@ -5,9 +5,9 @@ pygame.init()
 # Colours
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-GREY = (128,128,128)
+GREY = (128, 128, 128)
 # Display setup
-screen_size = (800,500)
+screen_size = (800, 500)
 screen = pygame.display.set_mode(screen_size)
 screen.fill(BLACK)
 pygame.display.set_caption("Pong")
@@ -28,7 +28,7 @@ ball_x = 375
 ball_y = 235
 ball_speed = 9
 # Starting direction
-ball_start_side = random.randint(1,2)
+ball_start_side = random.randint(1, 2)
 if ball_start_side == 1:
     player_turn = "left"
 if ball_start_side == 2:
@@ -46,41 +46,49 @@ fullscreen_reminder = font.render("Press ctrl to toggle fullscreen", True, (255,
 text_rect_starter = starting_text.get_rect(center=(400, 400))
 text_rect_reminder = fullscreen_reminder.get_rect(center=(400, 450))
 
+# Main menu
+screen.fill(BLACK)
+# Drawing the midpoint line
+pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
+# Drawing the players
+clock = pygame.time.Clock()
+pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
+pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
+# Drawing the ball
+pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
+pygame.display.flip()
+# Displaying the text
+screen.blit(starting_text, text_rect_starter)
+screen.blit(fullscreen_reminder, text_rect_reminder)
 
-# Game loop
-while running:
+pygame.display.flip()
+fpsClock.tick(FPS)
 
-    # When the game has not started
-    while start == False:
-        screen.fill(BLACK)
-        # Drawing the midpoint line
-        pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
-        # Drawing the players
-        clock = pygame.time.Clock()
-        pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
-        pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
-        # Drawing the ball
-        pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
-        pygame.display.flip()
-        # Displaying the text
-        screen.blit(starting_text, text_rect_starter)
-        screen.blit(fullscreen_reminder, text_rect_reminder)
 
-        pygame.display.flip()
-        fpsClock.tick(FPS)
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+while start == False:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
                 pygame.quit()
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    pygame.quit()
-                elif event.key == pygame.K_LCTRL:
-                    pygame.display.toggle_fullscreen()
-                else:
-                    start = True
+            # Toggle fullscreen
+            elif event.key == pygame.K_LCTRL:
+                pygame.display.toggle_fullscreen()
+                screen.fill(BLACK)
+                pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
+                clock = pygame.time.Clock()
+                pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
+                pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
+                pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
+                screen.blit(starting_text, text_rect_starter)
+                screen.blit(fullscreen_reminder, text_rect_reminder)
+                pygame.display.flip()
+            else:
+                start = True
 
-    # When the game has started
+# Game loop (the game has started)
+while running:
     for event in pygame.event.get():
         # Quits if user presses esc
         if event.type == pygame.KEYDOWN:
@@ -111,7 +119,6 @@ while running:
         # Quits when the user presses the close button (x)
         elif event.type == pygame.QUIT:
             running = False
-    
     # Moving the ball
     # Vertical movement
     if ball_y_direction == "up":
@@ -139,19 +146,15 @@ while running:
             player_turn = "left"
     
     screen.fill(BLACK)
-    
     # Drawing the midpoint line
     pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
-
     # Drawing the players
     clock = pygame.time.Clock()
     pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
     pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
     # Drawing the ball
     pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
-
     pygame.display.flip()
     fpsClock.tick(FPS) 
 
-# Quit
 pygame.quit()
