@@ -1,5 +1,4 @@
-# Welcome to Pong, recreated in Pygame
-
+***<h1 style="text-align:center;">Welcome to Pong, recreated in Pygame</p>*** ***<p style="text-align:center;">⁕ ⁕ ⁕</p>***
 ### **Pong is currently in development**
 
 
