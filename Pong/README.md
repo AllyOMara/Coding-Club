@@ -1,4 +1,4 @@
-***<h1 style="text-align:center;">Welcome to Pong, recreated in Pygame</p>*** ***<p style="text-align:center;">⁕ ⁕ ⁕</p>***
+***<h1 style="text-align:center;">Welcome to Pong, recreated in Pygame</p>***
 ### **Pong is currently in development**
 
 
@@ -13,7 +13,7 @@ The following is yet to be done:
 - Make the ball interact with the player
 - Make the ball interact with the boundary behind the player
 - Scoring system
-
+<br><br>
 
 Some extra completed ideas:
 - Pressing esc or the top right close button (x) closes the game
