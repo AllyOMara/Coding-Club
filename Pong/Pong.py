@@ -6,39 +6,49 @@ pygame.init()
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREY = (128, 128, 128)
+
 # Display setup
 screen_size = (800, 500)
 screen = pygame.display.set_mode(screen_size)
 screen.fill(BLACK)
-pygame.display.set_caption("Pong")
+pygame.display.set_caption("")
 lower_bound = 350
 upper_bound = 0
+
 # Player 1
 player_1_y = 150
 player_1_x = 20
 player_1_up = pygame.K_w
 player_1_down = pygame.K_s
+
 # Player 2
 player_2_y = 150
 player_2_x = 760
 player_2_up = pygame.K_UP
 player_2_down = pygame.K_DOWN
+
 # Ball variables
 ball_x = 375
 ball_y = 235
 ball_speed = 9
-# Starting direction
+
+# Starting direction and angle
 ball_start_side = random.randint(1, 2)
 if ball_start_side == 1:
     player_turn = "left"
-if ball_start_side == 2:
+elif ball_start_side == 2:
     player_turn = "right"
+ball_start_angle = random.randint(1, 2)
+if ball_start_angle == 1:
+    ball_y_direction = "down"
+elif ball_start_angle == 2:
+    ball_y_direction = "up"
+
 # Misc
 running = True
 FPS = 50
 fpsClock = pygame.time.Clock()
 player_move_units = 50
-ball_y_direction = "down"
 start = False
 font = pygame.font.Font(None, 60)
 starting_text = font.render("Press any button to start", True, (255, 255, 255))
@@ -60,10 +70,8 @@ pygame.display.flip()
 # Displaying the text
 screen.blit(starting_text, text_rect_starter)
 screen.blit(fullscreen_reminder, text_rect_reminder)
-
 pygame.display.flip()
 fpsClock.tick(FPS)
-
 
 while start == False:
     for event in pygame.event.get():
@@ -144,7 +152,6 @@ while running:
             ball_x = ball_x + ball_speed
         elif ball_x >= 0:
             player_turn = "left"
-    
     screen.fill(BLACK)
     # Drawing the midpoint line
     pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
