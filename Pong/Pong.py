@@ -98,7 +98,7 @@ while start == False:
 # Game loop (the game has started)
 while running:
     for event in pygame.event.get():
-        # Quits if user presses esc
+        # Quits
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 running = False
@@ -127,6 +127,7 @@ while running:
         # Quits when the user presses the close button (x)
         elif event.type == pygame.QUIT:
             running = False
+   
     # Moving the ball
     # Vertical movement
     if ball_y_direction == "up":
@@ -152,6 +153,8 @@ while running:
             ball_x = ball_x + ball_speed
         elif ball_x >= 0:
             player_turn = "left"
+    
+    # Displaying the new frame
     screen.fill(BLACK)
     # Drawing the midpoint line
     pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
@@ -161,7 +164,8 @@ while running:
     pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
     # Drawing the ball
     pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
+
     pygame.display.flip()
-    fpsClock.tick(FPS) 
+    fpsClock.tick(FPS)
 
 pygame.quit()
