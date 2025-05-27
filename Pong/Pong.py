@@ -2,37 +2,27 @@ import pygame
 import random
 pygame.init()
 
-# Colours
+# Setup
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREY = (128, 128, 128)
-
-# Display setup
 screen_size = (800, 500)
 screen = pygame.display.set_mode(screen_size)
 screen.fill(BLACK)
 pygame.display.set_caption("")
 lower_bound = 350
 upper_bound = 0
-
-# Player 1
 player_1_y = 150
 player_1_x = 20
 player_1_up = pygame.K_w
 player_1_down = pygame.K_s
-
-# Player 2
 player_2_y = 150
 player_2_x = 760
 player_2_up = pygame.K_UP
 player_2_down = pygame.K_DOWN
-
-# Ball variables
 ball_x = 375
 ball_y = 235
 ball_speed = 9
-
-# Starting direction and angle
 ball_start_side = random.randint(1, 2)
 if ball_start_side == 1:
     player_turn = "left"
@@ -43,8 +33,6 @@ if ball_start_angle == 1:
     ball_y_direction = "down"
 elif ball_start_angle == 2:
     ball_y_direction = "up"
-
-# Misc
 running = True
 FPS = 50
 fpsClock = pygame.time.Clock()
