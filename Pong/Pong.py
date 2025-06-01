@@ -89,8 +89,6 @@ while start == False:
                 pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
                 screen.blit(starting_text, text_rect_starter)
                 screen.blit(fullscreen_reminder, text_rect_reminder)
-                screen.blit(player_1_score_text, text_player_1_score_text)
-                screen.blit(player_2_score_text, text_player_2_score_text)
                 pygame.display.flip()
             else:
                 start = True
