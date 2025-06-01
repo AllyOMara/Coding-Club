@@ -1,5 +1,5 @@
 ***<h1 style="text-align:center;">Welcome to Pong, recreated in Pygame</p>***
-
+<br>
 
 So far the following has been done:
 - Two Players have been created
