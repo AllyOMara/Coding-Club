@@ -168,7 +168,7 @@ while running:
                 player_turn = "left"
                 ball_x = ball_x - ball_speed
             if ball_x < 770:
-                if 730 <= ball_x <= 750 and player_2_y <= ball_y <= player_2_y + 150:
+                if 730 <= ball_x <= 750 and player_2_y - 15 <= ball_y <= player_2_y + 150:
                     player_turn = "left"
                     ball_x = ball_x - ball_speed
                 else:
@@ -182,7 +182,6 @@ while running:
                 ball_x = 375
                 ball_y = 235
                 start = False
-                
 
         # Displaying the new frame
         screen.fill(BLACK)
