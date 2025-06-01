@@ -1,5 +1,4 @@
 ***<h1 style="text-align:center;">Welcome to Pong, recreated in Pygame</p>***
-### **Pong is currently in development**
 
 
 So far the following has been done:
@@ -8,8 +7,6 @@ So far the following has been done:
 - The players are given a boundary
 - A ball has been added
 - The ball can move within the screen
-
-The following is yet to be done:
 - Make the ball interact with the player
 - Make the ball interact with the boundary behind the player
 - Scoring system
