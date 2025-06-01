@@ -2,37 +2,44 @@ import pygame
 import random
 pygame.init()
 
-# Colours
+# Setup
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREY = (128, 128, 128)
-
-# Display setup
 screen_size = (800, 500)
 screen = pygame.display.set_mode(screen_size)
 screen.fill(BLACK)
 pygame.display.set_caption("")
 lower_bound = 350
 upper_bound = 0
-
-# Player 1
 player_1_y = 150
 player_1_x = 20
 player_1_up = pygame.K_w
 player_1_down = pygame.K_s
 player_1_score = 0
-
-# Player 2
 player_2_y = 150
 player_2_x = 760
 player_2_up = pygame.K_UP
 player_2_down = pygame.K_DOWN
 player_2_score = 0
-
-# Ball variables
 ball_x = 375
 ball_y = 235
 ball_speed = 9
+running = True
+FPS = 50
+fpsClock = pygame.time.Clock()
+player_move_units = 50
+start = False
+font = pygame.font.Font(None, 60)
+score_font = pygame.font.Font(None, 160)
+starting_text = font.render("Press any button to start", True, (255, 255, 255))
+fullscreen_reminder = font.render("Press ctrl to toggle fullscreen", True, (255, 255, 255))
+text_rect_starter = starting_text.get_rect(center=(400, 400))
+text_rect_reminder = fullscreen_reminder.get_rect(center=(400, 450))
+player_1_score_text = score_font.render(f"{player_1_score}", True, (128, 128, 128))
+player_2_score_text = score_font.render(f"{player_2_score}", True, (128, 128, 128))
+text_player_1_score_text = player_1_score_text.get_rect(center=(900, 50))
+text_player_2_score_text = player_2_score_text.get_rect(center=(400, 50))
 
 # Starting direction and angle
 ball_start_side = random.randint(1, 2)
@@ -46,32 +53,21 @@ if ball_start_angle == 1:
 elif ball_start_angle == 2:
     ball_y_direction = "up"
 
-# Misc
-running = True
-FPS = 50
-fpsClock = pygame.time.Clock()
-player_move_units = 50
-start = False
-font = pygame.font.Font(None, 60)
-starting_text = font.render("Press any button to start", True, (255, 255, 255))
-fullscreen_reminder = font.render("Press ctrl to toggle fullscreen", True, (255, 255, 255))
-text_rect_starter = starting_text.get_rect(center=(400, 400))
-text_rect_reminder = fullscreen_reminder.get_rect(center=(400, 450))
 
 # Main menu
 screen.fill(BLACK)
-# Drawing the midpoint line
 pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
-# Drawing the players
 clock = pygame.time.Clock()
 pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
 pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
-# Drawing the ball
 pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
-pygame.display.flip()
-# Displaying the text
+player_1_score_text = score_font.render(f"{player_1_score}", True, (128, 128, 128))
+player_2_score_text = score_font.render(f"{player_2_score}", True, (128, 128, 128))
+text_player_1_score_text = player_1_score_text.get_rect(center=(900, 50))
+text_player_2_score_text = player_2_score_text.get_rect(center=(400, 50))
 screen.blit(starting_text, text_rect_starter)
 screen.blit(fullscreen_reminder, text_rect_reminder)
+pygame.display.flip()
 pygame.display.flip()
 fpsClock.tick(FPS)
 
@@ -93,6 +89,8 @@ while start == False:
                 pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
                 screen.blit(starting_text, text_rect_starter)
                 screen.blit(fullscreen_reminder, text_rect_reminder)
+                screen.blit(player_1_score_text, text_player_1_score_text)
+                screen.blit(player_2_score_text, text_player_2_score_text)
                 pygame.display.flip()
             else:
                 start = True
@@ -148,13 +146,12 @@ while running:
         # Horizontal movement
         if player_turn == "left":
             if ball_x > 0:
-                if 20 <= ball_x <= 40 and player_1_y <= ball_y <= player_1_y + 150:
+                if player_1_x <= ball_x <= player_1_x + 20 and player_1_y <= ball_y <= player_1_y + 150:
                     ball_x = ball_x + ball_speed
                     player_turn = "right"
                 else:
                     ball_x = ball_x - ball_speed
             elif ball_x <= 0:
-                start = False
                 player_2_score = player_2_score + 1
                 player_1_y = 150
                 player_1_x = 20
@@ -162,6 +159,8 @@ while running:
                 player_2_x = 760
                 ball_x = 375
                 ball_y = 235
+                start = False
+                
             else:
                 start = True
         elif player_turn == "right":
@@ -175,8 +174,14 @@ while running:
                 else:
                     ball_x = ball_x + ball_speed
             else:
-                start = False
                 player_1_score = player_1_score + 1
+                player_1_y = 150
+                player_1_x = 20
+                player_2_y = 150
+                player_2_x = 760
+                ball_x = 375
+                ball_y = 235
+                start = False
                 
 
         # Displaying the new frame
@@ -186,6 +191,12 @@ while running:
         pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
         pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
         pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
+        player_1_score_text = score_font.render(f"{player_1_score}", True, (128, 128, 128))
+        player_2_score_text = score_font.render(f"{player_2_score}", True, (128, 128, 128))
+        text_player_1_score_text = starting_text.get_rect(center=(900, 50))
+        text_player_2_score_text = fullscreen_reminder.get_rect(center=(400, 50))
+        screen.blit(player_1_score_text, text_player_1_score_text)
+        screen.blit(player_2_score_text, text_player_2_score_text)
 
         pygame.display.flip()
         fpsClock.tick(FPS)
@@ -208,6 +219,8 @@ while running:
                         pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
                         screen.blit(starting_text, text_rect_starter)
                         screen.blit(fullscreen_reminder, text_rect_reminder)
+                        screen.blit(player_1_score_text, text_player_1_score_text)
+                        screen.blit(player_2_score_text, text_player_2_score_text)
                         pygame.display.flip()
                     else:
                         start = True
