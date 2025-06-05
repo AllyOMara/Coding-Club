@@ -9,6 +9,6 @@ Features
 - Player can determine number of games to play
 <br><br>
 
-Some extra completed ideas:
+Extra Features
 - Customised messages based on player name
 - Customised messages based on winner
