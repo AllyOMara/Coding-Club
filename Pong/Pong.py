@@ -9,7 +9,7 @@ GREY = (128, 128, 128)
 screen_size = (800, 500)
 screen = pygame.display.set_mode(screen_size)
 screen.fill(BLACK)
-pygame.display.set_caption("Pong🏓")
+pygame.display.set_caption("Pong")
 lower_bound = 350
 upper_bound = 0
 player_1_y = 150
