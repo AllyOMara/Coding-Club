@@ -1,8 +1,8 @@
 import pygame
 import random
-pygame.init()
 
 # Setup
+pygame.init()
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREY = (128, 128, 128)
@@ -40,8 +40,6 @@ player_1_score_text = score_font.render(f"{player_1_score}", True, (128, 128, 12
 player_2_score_text = score_font.render(f"{player_2_score}", True, (128, 128, 128))
 text_player_2_score_text = player_2_score_text.get_rect(center=(900, 50))
 text_player_1_score_text = player_1_score_text.get_rect(center=(400, 50))
-
-# Starting direction and angle
 ball_start_side = random.randint(1, 2)
 if ball_start_side == 1:
     player_turn = "left"
@@ -52,7 +50,6 @@ if ball_start_angle == 1:
     ball_y_direction = "down"
 elif ball_start_angle == 2:
     ball_y_direction = "up"
-
 
 # Main menu
 screen.fill(BLACK)
@@ -70,7 +67,6 @@ screen.blit(fullscreen_reminder, text_rect_reminder)
 pygame.display.flip()
 pygame.display.flip()
 fpsClock.tick(FPS)
-
 while start == False:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -93,7 +89,7 @@ while start == False:
             else:
                 start = True
 
-# Game loop (the game has started)
+# Game loop
 while running:
     while start == True:
         for event in pygame.event.get():
@@ -101,7 +97,7 @@ while running:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     running = False
-                # Moving player 1
+                # Player movement
                 if event.key == player_1_up:
                     if player_1_y < upper_bound:
                         player_1_y == player_1_y
@@ -112,7 +108,6 @@ while running:
                         player_1_y = player_1_y
                     elif player_1_y < lower_bound:
                         player_1_y = player_1_y + player_move_units
-                # Moving player 2
                 if event.key == player_2_up:
                     if player_2_y < upper_bound:
                         player_2_y == player_2_y
@@ -123,12 +118,11 @@ while running:
                         player_2_y = player_2_y
                     elif player_2_y < lower_bound:
                         player_2_y = player_2_y + player_move_units
-            # Quits when the user presses the close button (x)
+            # Quits
             elif event.type == pygame.QUIT:
                 running = False
     
-        # Moving the ball
-        # Vertical movement
+        # Ball Movement
         if ball_y_direction == "up":
             if ball_y > 0:
                 ball_y = ball_y - ball_speed
@@ -141,7 +135,7 @@ while running:
             elif ball_y >= 470:
                 ball_y = ball_y - ball_speed
                 ball_y_direction = "up"
-        # Horizontal movement
+        # Collision
         if player_turn == "left":
             if ball_x > 0:
                 if player_1_x <= ball_x <= player_1_x + 20 and player_1_y <= ball_y <= player_1_y + 150:
@@ -158,7 +152,6 @@ while running:
                 ball_x = 375
                 ball_y = 235
                 start = False
-                
             else:
                 start = True
         elif player_turn == "right":
@@ -180,8 +173,7 @@ while running:
                 ball_x = 375
                 ball_y = 235
                 start = False
-
-        # Displaying the new frame
+        # New frame
         screen.fill(BLACK)
         pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
         clock = pygame.time.Clock()
@@ -194,10 +186,9 @@ while running:
         text_player_1_score_text = fullscreen_reminder.get_rect(center=(400, 50))
         screen.blit(player_1_score_text, text_player_1_score_text)
         screen.blit(player_2_score_text, text_player_2_score_text)
-
         pygame.display.flip()
         fpsClock.tick(FPS)
-    
+    # Between rounds
     while start == False:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -205,7 +196,6 @@ while running:
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         pygame.quit()
-                    # Toggle fullscreen
                     elif event.key == pygame.K_LCTRL:
                         pygame.display.toggle_fullscreen()
                         screen.fill(BLACK)
@@ -221,6 +211,5 @@ while running:
                         pygame.display.flip()
                     else:
                         start = True
-    
 
 pygame.quit()
