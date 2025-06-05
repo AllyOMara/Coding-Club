@@ -10,7 +10,7 @@ Features
 - Scoring system
 <br><br>
 
-Some extra completed ideas:
+Extra Features
 - Random initial ball movement
 - Requires the pressing of a key to start
 - Fullscreen toggled using left ctrl
