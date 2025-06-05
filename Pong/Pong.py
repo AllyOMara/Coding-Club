@@ -121,7 +121,6 @@ while running:
             # Quits
             elif event.type == pygame.QUIT:
                 running = False
-    
         # Ball Movement
         if ball_y_direction == "up":
             if ball_y > 0:
