@@ -3,7 +3,7 @@
 
 
 Features
-- Player input to determine moves
+- Player input determines moves
 - Randomly generated computer move
 - Scoring system
 - Player can determine number of games to play
