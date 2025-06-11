@@ -181,10 +181,11 @@ while running:
         text_player_1_score_text = fullscreen_reminder.get_rect(center=(400, 50))
         screen.blit(player_1_score_text, text_player_1_score_text)
         screen.blit(player_2_score_text, text_player_2_score_text)
-        pygame.display.flip()
         pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
         pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
         pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
+        pygame.display.flip()
+
         fpsClock.tick(FPS)
 
     # Between rounds
