@@ -3,7 +3,7 @@ import random
 
 # Setup
 pygame.init()
-BLACK = (0, 0, 0)
+BLACK = (0, 0, 0) 
 WHITE = (255, 255, 255)
 GREY = (128, 128, 128)
 screen_size = (800, 500)
@@ -187,7 +187,7 @@ while running:
         screen.blit(player_2_score_text, text_player_2_score_text)
         pygame.display.flip()
         fpsClock.tick(FPS)
-    # Between rounds
+    # Between rounds (resets)
     while start == False:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
