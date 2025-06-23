@@ -2,7 +2,7 @@
 <br>
 
 
-Features
+Main Features
 - Two Players, movable within a boundary
 - The players are given a boundary
 - A ball, movable within a boundary
@@ -10,7 +10,7 @@ Features
 - Scoring system
 <br><br>
 
-Extra Features
+Extra
 - Random initial ball movement
 - Requires the pressing of a key to start
 - Fullscreen toggled using left ctrl

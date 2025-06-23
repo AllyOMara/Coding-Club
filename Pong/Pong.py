@@ -1,6 +1,5 @@
 import pygame
 import random
-
 # Setup
 pygame.init()
 BLACK = (0, 0, 0) 
@@ -134,7 +133,7 @@ while running:
             elif ball_y >= 470:
                 ball_y = ball_y - ball_speed
                 ball_y_direction = "up"
-        # Collision
+        # Collision with players
         if player_turn == "left":
             if ball_x > 0:
                 if player_1_x <= ball_x <= player_1_x + 20 and player_1_y <= ball_y <= player_1_y + 150:
@@ -176,18 +175,20 @@ while running:
         screen.fill(BLACK)
         pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
         clock = pygame.time.Clock()
-        pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
-        pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
-        pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
         player_1_score_text = score_font.render(f"{player_1_score}", True, (128, 128, 128))
         player_2_score_text = score_font.render(f"{player_2_score}", True, (128, 128, 128))
         text_player_2_score_text = starting_text.get_rect(center=(900, 50))
         text_player_1_score_text = fullscreen_reminder.get_rect(center=(400, 50))
         screen.blit(player_1_score_text, text_player_1_score_text)
         screen.blit(player_2_score_text, text_player_2_score_text)
+        pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
+        pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
+        pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
         pygame.display.flip()
+
         fpsClock.tick(FPS)
-    # Between rounds (resets)
+
+    # Between rounds
     while start == False:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
