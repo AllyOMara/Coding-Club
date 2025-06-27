@@ -15,3 +15,8 @@ Extra
 - Requires the pressing of a key to start
 - Fullscreen toggled using left ctrl
 - Text added to indicate the preceding two points are available
+<br><br>
+
+TO DO [EXTRA]
+- Add title screen
+- Add introduction screen (maybe)
