@@ -49,6 +49,15 @@ if ball_start_angle == 1:
     ball_y_direction = "down"
 elif ball_start_angle == 2:
     ball_y_direction = "up"
+title_screen = True
+
+while title_screen == True;
+    # PLACEHOLDER TEXT - Insert what to do for title screen
+
+    # Set up the title screen
+
+    # Display the title screen
+
 
 # Main menu
 screen.fill(BLACK)
