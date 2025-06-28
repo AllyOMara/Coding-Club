@@ -39,6 +39,7 @@ player_1_score_text = score_font.render(f"{player_1_score}", True, (128, 128, 12
 player_2_score_text = score_font.render(f"{player_2_score}", True, (128, 128, 128))
 text_player_2_score_text = player_2_score_text.get_rect(center=(900, 50))
 text_player_1_score_text = player_1_score_text.get_rect(center=(400, 50))
+
 ball_start_side = random.randint(1, 2)
 if ball_start_side == 1:
     player_turn = "left"
@@ -50,10 +51,13 @@ if ball_start_angle == 1:
 elif ball_start_angle == 2:
     ball_y_direction = "up"
 title_screen = True
+pong_title_screen_text = score_font.render("PONG", True, (255, 255, 255))
+text_pong_title_screen_text = pong_title_screen_text.get_rect(center = (400,200))
 
-while title_screen == True;
+# Title screen
+while title_screen == True:
     # PLACEHOLDER TEXT - Insert what to do for title screen
-
+    
     # Set up the title screen
 
     # Display the title screen
