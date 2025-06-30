@@ -51,16 +51,38 @@ if ball_start_angle == 1:
 elif ball_start_angle == 2:
     ball_y_direction = "up"
 title_screen = True
-pong_title_screen_text = score_font.render("PONG", True, (255, 255, 255))
-text_pong_title_screen_text = pong_title_screen_text.get_rect(center = (400,200))
+pong_title_screen_text = font.render("PONG", True, (255, 255, 255))
+text_rect_title_screen = pong_title_screen_text.get_rect(center = (400,100))
+start = font.render("start", True, (255, 255, 255))
+rect_start = pong_title_screen_text.get_rect(center = (400,200))
+how_to = font.render("PONG", True, (255, 255, 255))
+how_to_rect = pong_title_screen_text.get_rect(center = (400,100))
 
+title_option = 1
 # Title screen
 while title_screen == True:
     # PLACEHOLDER TEXT - Insert what to do for title screen
+    # Display
+    screen.blit(pong_title_screen_text, text_rect_title_screen)
     
-    # Set up the title screen
+    # Choosing menu options
+    
 
-    # Display the title screen
+
+    # Change to main menu
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                pygame.quit()
+            # Toggle fullscreen
+            elif event.key == pygame.K_LCTRL:
+                pygame.display.toggle_fullscreen()
+                screen.blit(pong_title_screen_text, text_rect_title_screen)
+            else:
+                title_screen = False
+    pygame.display.flip()
 
 
 # Main menu
