@@ -61,12 +61,10 @@ how_to_rect = pong_title_screen_text.get_rect(center = (400,100))
 title_option = 1
 # Title screen
 while title_screen == True:
-    # PLACEHOLDER TEXT - Insert what to do for title screen
     # Display
     screen.blit(pong_title_screen_text, text_rect_title_screen)
     
     # Choosing menu options
-    
 
 
     # Change to main menu
