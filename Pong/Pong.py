@@ -66,7 +66,6 @@ while title_screen == True:
     
     # Choosing menu options
 
-
     # Change to main menu
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -81,7 +80,6 @@ while title_screen == True:
             else:
                 title_screen = False
     pygame.display.flip()
-
 
 # Main menu
 screen.fill(BLACK)
