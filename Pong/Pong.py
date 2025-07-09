@@ -24,7 +24,7 @@ player_2_score = 0
 ball_x = 375
 ball_y = 235
 ball_speed = 9
-running = True
+running = False
 FPS = 50
 fpsClock = pygame.time.Clock()
 player_move_units = 50
@@ -79,6 +79,7 @@ while title_screen == True:
                 screen.blit(pong_title_screen_text, text_rect_title_screen)
             else:
                 title_screen = False
+                start = False
     pygame.display.flip()
 
 # Main menu
@@ -118,9 +119,21 @@ while start == False:
                 pygame.display.flip()
             else:
                 start = True
+                running = True
+start = False
 
 # Game loop
 while running:
+    while start == False:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    runnning = False
+                elif event.key == pygame.K_LCTRL:
+                    pygame.display.toggle_fullscreen()
+                    pygame.display.flip
+                else:
+                    start = True
     while start == True:
         for event in pygame.event.get():
             # Quits
@@ -216,7 +229,6 @@ while running:
         pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
         pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
         pygame.display.flip()
-
         fpsClock.tick(FPS)
 
     # Between rounds
