@@ -40,7 +40,6 @@ player_1_score_text = score_font.render(f"{player_1_score}", True, (128, 128, 12
 player_2_score_text = score_font.render(f"{player_2_score}", True, (128, 128, 128))
 text_player_2_score_text = player_2_score_text.get_rect(center=(900, 50))
 text_player_1_score_text = player_1_score_text.get_rect(center=(400, 50))
-
 ball_start_side = random.randint(1, 2)
 if ball_start_side == 1:
     player_turn = "left"
@@ -67,8 +66,8 @@ while title_screen == True:
     # Option 1 --> start
     # Option 2 --> info
     # Option 3 --> quit
-    # Choosing menu options
 
+    # Choosing menu options
     # Change to main menu
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -80,6 +79,12 @@ while title_screen == True:
             elif event.key == pygame.K_LCTRL:
                 pygame.display.toggle_fullscreen()
                 screen.blit(pong_title_screen_text, text_rect_title_screen)
+            elif event.key == pygame.K_UP and title_option != 1:
+                title_option = title_option - 1
+                # UPDATE FRAME
+            elif event.key == pygame.K_DOWN and title_option != 3:
+                title_option = title_option + 1
+                # UPDATE FRAME
             else:
                 title_screen = False
                 start = False
@@ -256,5 +261,6 @@ while running:
                         pygame.display.flip()
                     else:
                         begin_game = True
+
 
 pygame.quit()
