@@ -60,38 +60,39 @@ how_to = font.render("PONG", True, (255, 255, 255))
 how_to_rect = pong_title_screen_text.get_rect(center = (400,100))
 title_option = 1
 
-# Title screen
+# Title Screen
 while title_screen == True:
     # Display
     screen.blit(pong_title_screen_text, text_rect_title_screen)
-    # Option 1 --> Start (begin the game)
-    # Option 2 --> Info (controls, etc.)
-    # Option 3 --> Quit
+    # Option 1 ---> Start (begin the game)
+    # Option 2 ---> Info (controls, etc.)
+    # Option 3 ---> Quit (quits)
 
     # Choosing menu options
-    # Change to main menu
+    # Change to Main Menu
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
-            # Toggle fullscreen
+            # Toggle Fullscreen
             elif event.key == pygame.K_LCTRL:
                 pygame.display.toggle_fullscreen()
                 screen.blit(pong_title_screen_text, text_rect_title_screen)
             elif event.key == pygame.K_UP and title_option != 1:
                 title_option = title_option - 1
-                # UPDATE FRAME
+                # Update frame
             elif event.key == pygame.K_DOWN and title_option != 3:
                 title_option = title_option + 1
-                # UPDATE FRAME
+                # Update frame
+            # Select keys: z, space and enter (makes the most sense)
             else:
                 title_screen = False
                 start = False
     pygame.display.flip()
 
-# Main menu
+# Main Menu
 screen.fill(BLACK)
 pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
 pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
