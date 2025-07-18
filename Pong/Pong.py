@@ -156,11 +156,12 @@ while running:
                         pygame.display.flip()
                     else:
                         begin_game = True
-
     while begin_game == True:
         for event in pygame.event.get():
             # Quits
-            if event.type == pygame.KEYDOWN:
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                 # Player movement
@@ -184,9 +185,6 @@ while running:
                         player_2_y = player_2_y
                     elif player_2_y < lower_bound:
                         player_2_y = player_2_y + player_move_units
-            # Quits
-            elif event.type == pygame.QUIT:
-                running = False
         # Ball Movement
         if ball_y_direction == "up":
             if ball_y > 0:
