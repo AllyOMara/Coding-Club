@@ -1,5 +1,6 @@
 import pygame
 import random
+
 # Setup
 pygame.init()
 BLACK = (0, 0, 0) 
@@ -63,9 +64,9 @@ title_option = 1
 while title_screen == True:
     # Display
     screen.blit(pong_title_screen_text, text_rect_title_screen)
-    # Option 1 --> start
-    # Option 2 --> info
-    # Option 3 --> quit
+    # Option 1 --> Start (begin the game)
+    # Option 2 --> Info (controls, etc.)
+    # Option 3 --> Quit
 
     # Choosing menu options
     # Change to main menu
@@ -128,20 +129,34 @@ while start == False:
             else:
                 start = True
                 running = True
-begin_game = False
+begin_game = True
 
 # Game loop
 while running:
+    # Between rounds
     while begin_game == False:
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
                     pygame.quit()
-                elif event.key == pygame.K_LCTRL:
-                    pygame.display.toggle_fullscreen()
-                    pygame.display.flip
-                else:
-                    begin_game = True
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        pygame.quit()
+                    elif event.key == pygame.K_LCTRL:
+                        pygame.display.toggle_fullscreen()
+                        screen.fill(BLACK)
+                        pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
+                        clock = pygame.time.Clock()
+                        pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
+                        pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
+                        pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
+                        screen.blit(starting_text, text_rect_starter)
+                        screen.blit(fullscreen_reminder, text_rect_reminder)
+                        screen.blit(player_1_score_text, text_player_1_score_text)
+                        screen.blit(player_2_score_text, text_player_2_score_text)
+                        pygame.display.flip()
+                    else:
+                        begin_game = True
+
     while begin_game == True:
         for event in pygame.event.get():
             # Quits
@@ -189,6 +204,11 @@ while running:
         if player_turn == "left":
             if ball_x > 0:
                 if player_1_x <= ball_x <= player_1_x + 20 and player_1_y <= ball_y <= player_1_y + 150:
+                    random_ball_movement = random.randint(1, 2)
+                    if random_ball_movement == 1:
+                        ball_y_direction = "up"
+                    elif random_ball_movement == 2:
+                        ball_y_direction = "down"
                     ball_x = ball_x + ball_speed
                     player_turn = "right"
                 else:
@@ -206,6 +226,11 @@ while running:
                 begin_game = True
         elif player_turn == "right":
             if 730 <= ball_x <= 750 and player_2_y <= ball_y <= player_2_y + 150:
+                random_ball_movement = random.randint(1, 2)
+                if random_ball_movement == 1:
+                    ball_y_direction = "up"
+                elif random_ball_movement == 2:
+                    ball_y_direction = "down"
                 player_turn = "left"
                 ball_x = ball_x - ball_speed
             if ball_x < 770:
@@ -237,30 +262,6 @@ while running:
         pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
         pygame.display.flip()
         fpsClock.tick(FPS)
-
-    # Between rounds
-    while begin_game == False:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        pygame.quit()
-                    elif event.key == pygame.K_LCTRL:
-                        pygame.display.toggle_fullscreen()
-                        screen.fill(BLACK)
-                        pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
-                        clock = pygame.time.Clock()
-                        pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
-                        pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
-                        pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
-                        screen.blit(starting_text, text_rect_starter)
-                        screen.blit(fullscreen_reminder, text_rect_reminder)
-                        screen.blit(player_1_score_text, text_player_1_score_text)
-                        screen.blit(player_2_score_text, text_player_2_score_text)
-                        pygame.display.flip()
-                    else:
-                        begin_game = True
 
 
 pygame.quit()
