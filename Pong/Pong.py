@@ -94,7 +94,6 @@ while title_screen == True:
 # Main menu
 screen.fill(BLACK)
 pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
-clock = pygame.time.Clock()
 pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
 pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
 pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
@@ -265,6 +264,5 @@ while running:
         pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
         pygame.display.flip()
         fpsClock.tick(FPS)
-
 
 pygame.quit()
