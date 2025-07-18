@@ -235,6 +235,11 @@ while running:
                 ball_x = ball_x - ball_speed
             if ball_x < 770:
                 if 730 <= ball_x <= 750 and player_2_y - 15 <= ball_y <= player_2_y + 150:
+                    random_ball_movement = random.randint(1, 2)
+                    if random_ball_movement == 1:
+                        ball_y_direction = "up"
+                    elif random_ball_movement == 2:
+                        ball_y_direction = "down"
                     player_turn = "left"
                     ball_x = ball_x - ball_speed
                 else:
