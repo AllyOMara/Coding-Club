@@ -25,6 +25,7 @@ player_2_score = 0
 ball_x = 375
 ball_y = 235
 ball_speed = 9
+ball_speed_y = 9
 running = False
 FPS = 50
 fpsClock = pygame.time.Clock()
@@ -188,27 +189,26 @@ while running:
         # Ball Movement
         if ball_y_direction == "up":
             if ball_y > 0:
-                ball_y = ball_y - ball_speed
+                ball_y = ball_y - ball_speed_y
             elif ball_y <= 0:
-                ball_y = ball_y + ball_speed
+                ball_y = ball_y + ball_speed_y
                 ball_y_direction = "down"
         elif ball_y_direction == "down":
             if ball_y < 470:
-                ball_y = ball_y + ball_speed
+                ball_y = ball_y + ball_speed_y
             elif ball_y >= 470:
-                ball_y = ball_y - ball_speed
+                ball_y = ball_y - ball_speed_y
                 ball_y_direction = "up"
         # Collision with players
         if player_turn == "left":
             if ball_x > 0:
-                if player_1_x <= ball_x <= player_1_x + 20 and player_1_y <= ball_y <= player_1_y + 150:
-                    random_ball_movement = random.randint(1, 2)
-                    if random_ball_movement == 1:
+                if 20 <= ball_x <= 40 and player_1_y <= ball_y <= player_1_y + 150:
+                    random_ball_movement_x = random.randint(1, 2)
+                    if random_ball_movement_x == 1:
                         ball_y_direction = "up"
-                    elif random_ball_movement == 2:
+                    elif random_ball_movement_x == 2:
                         ball_y_direction = "down"
-                    ball_x = ball_x + ball_speed
-                    player_turn = "right"
+                    ball_speed_y = random.randint(1,10)
                 else:
                     ball_x = ball_x - ball_speed
             elif ball_x <= 0:
@@ -224,20 +224,22 @@ while running:
                 begin_game = True
         elif player_turn == "right":
             if 730 <= ball_x <= 750 and player_2_y <= ball_y <= player_2_y + 150:
-                random_ball_movement = random.randint(1, 2)
-                if random_ball_movement == 1:
+                random_ball_movement_x = random.randint(1, 2)
+                if random_ball_movement_x == 1:
                     ball_y_direction = "up"
-                elif random_ball_movement == 2:
+                elif random_ball_movement_x == 2:
                     ball_y_direction = "down"
+                ball_speed_y = random.randint(1,10)
                 player_turn = "left"
                 ball_x = ball_x - ball_speed
             if ball_x < 770:
                 if 730 <= ball_x <= 750 and player_2_y - 15 <= ball_y <= player_2_y + 150:
-                    random_ball_movement = random.randint(1, 2)
-                    if random_ball_movement == 1:
+                    random_ball_movement_x = random.randint(1, 2)
+                    if random_ball_movement_x == 1:
                         ball_y_direction = "up"
-                    elif random_ball_movement == 2:
+                    elif random_ball_movement_x == 2:
                         ball_y_direction = "down"
+                    ball_speed_y = random.randint(1,10)
                     player_turn = "left"
                     ball_x = ball_x - ball_speed
                 else:
