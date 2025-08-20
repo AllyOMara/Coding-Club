@@ -209,6 +209,8 @@ while running:
                     elif random_ball_movement_x == 2:
                         ball_y_direction = "down"
                     ball_speed_y = random.randint(1,10)
+                    ball_speed = 17 - ball_speed_y
+                    player_turn = "right"
                 else:
                     ball_x = ball_x - ball_speed
             elif ball_x <= 0:
@@ -240,6 +242,7 @@ while running:
                     elif random_ball_movement_x == 2:
                         ball_y_direction = "down"
                     ball_speed_y = random.randint(1,10)
+                    ball_speed = 17 - ball_speed_y
                     player_turn = "left"
                     ball_x = ball_x - ball_speed
                 else:
