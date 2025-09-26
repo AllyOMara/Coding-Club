@@ -60,6 +60,7 @@ rect_start = pong_title_screen_text.get_rect(center = (400,200))
 how_to = font.render("PONG", True, (255, 255, 255))
 how_to_rect = pong_title_screen_text.get_rect(center = (400,100))
 title_option = 1
+player_selection_y = 200
 title_op_1 = font.render("Start Game", True, (255, 255, 255))
 title_op_2 = font.render("Information", True, (255, 255, 255))
 title_op_3 = font.render("Quit Game", True, (255, 255, 255))
@@ -67,16 +68,23 @@ title_op_3 = font.render("Quit Game", True, (255, 255, 255))
 # Title Screen
 while title_screen == True:
     # Display
+    screen.fill(BLACK)
     screen.blit(pong_title_screen_text, text_rect_title_screen)
-    # Option 1 ---> Start (begin the game)
     screen.blit(title_op_1, (290, 200))
-    # Option 2 ---> Info (controls, etc.)
     screen.blit(title_op_2, (290, 275))
-    # Option 3 ---> Quit (quits)
     screen.blit(title_op_3, (290, 350))
+    pygame.draw.rect(screen, WHITE, (250, player_selection_y , 30, 30))
+    pygame.display.flip()
     # Choosing menu options
     # Change to Main Menu
     for event in pygame.event.get():
+        if title_option == 1:
+            player_selection_y = 200
+
+        if title_option == 2:
+            player_selection_y = 275
+        if title_option ==3 :
+            player_selection_y = 350
         if event.type == pygame.QUIT:
             pygame.quit()
         elif event.type == pygame.KEYDOWN:
@@ -88,16 +96,20 @@ while title_screen == True:
                 screen.blit(pong_title_screen_text, text_rect_title_screen)
             elif event.key == pygame.K_UP and title_option != 1:
                 title_option = title_option - 1
-                # Update frame
             elif event.key == pygame.K_DOWN and title_option != 3:
                 title_option = title_option + 1
-                # Update frame
+            elif event.key == pygame.K_z or pygame.K_SPACE or pygame.K_RETURN:
+                if title_option == 1:
+                    title_screen = False
+                    start = False
             # Select keys: z, space and enter (makes the most sense)
             else:
                 title_screen = False
                 start = False
-    pygame.display.flip()
 
+
+        
+    
 # Main Menu
 screen.fill(BLACK)
 pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
