@@ -60,15 +60,20 @@ rect_start = pong_title_screen_text.get_rect(center = (400,200))
 how_to = font.render("PONG", True, (255, 255, 255))
 how_to_rect = pong_title_screen_text.get_rect(center = (400,100))
 title_option = 1
+title_op_1 = font.render("Start Game", True, (255, 255, 255))
+title_op_2 = font.render("Information", True, (255, 255, 255))
+title_op_3 = font.render("Quit Game", True, (255, 255, 255))
 
 # Title Screen
 while title_screen == True:
     # Display
     screen.blit(pong_title_screen_text, text_rect_title_screen)
     # Option 1 ---> Start (begin the game)
+    screen.blit(title_op_1, (290, 200))
     # Option 2 ---> Info (controls, etc.)
+    screen.blit(title_op_2, (290, 275))
     # Option 3 ---> Quit (quits)
-
+    screen.blit(title_op_3, (290, 350))
     # Choosing menu options
     # Change to Main Menu
     for event in pygame.event.get():
