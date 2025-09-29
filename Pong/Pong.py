@@ -65,7 +65,7 @@ title_op_1 = font.render("Start Game", True, (255, 255, 255))
 title_op_2 = font.render("Information", True, (255, 255, 255))
 title_op_3 = font.render("Quit Game", True, (255, 255, 255))
 info_controls_p1 = font.render("Player 1 movement: w and s", True, (255, 255, 255))
-info_controls_p2 = font.render("Player 2 movement: up and down arrow keys", True, (255, 255, 255))
+info_controls_p2 = font.render("Player 2 movement: up and down", True, (255, 255, 255))
 info_controls_quit = font.render("Press esc to quit", True, (255, 255, 255))
 info_screen = False
 
@@ -82,9 +82,10 @@ while title_screen == True:
         pygame.display.flip()
     elif info_screen == True:
         screen.fill(BLACK)
-        screen.blit(info_controls_p1, (290, 200))
-        screen.blit(info_controls_p2, (290, 275))
-        screen.blit(info_controls_quit, (290, 350))
+        screen.blit(info_controls_p1, (25, 100))
+        screen.blit(info_controls_p2, (25, 200))
+        screen.blit(info_controls_quit, (25, 300))
+        pygame.display.flip()
     # Choosing menu options
     for event in pygame.event.get():
         if title_option == 1:
@@ -110,9 +111,10 @@ while title_screen == True:
                 if title_option == 1:
                     title_screen = False
                     start = False
-                elif title_option == 2:
+                elif title_option == 2 and info_screen == False:
                     info_screen = True
-                    # Information Screen
+                elif title_option == 2 and info_screen == True:
+                    info_screen = False
                 elif title_option == 3:
                     pygame.quit()
             else:
