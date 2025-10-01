@@ -3,46 +3,66 @@ import random
 
 # Setup
 pygame.init()
-BLACK = (0, 0, 0) 
-WHITE = (255, 255, 255)
-GREY = (128, 128, 128)
-screen_size = (800, 500)
-screen = pygame.display.set_mode(screen_size)
+BLACK                       = (0, 0, 0) 
+WHITE                       = (255, 255, 255)
+GREY                        = (128, 128, 128)
+screen_size                 = (800, 500)
+screen                      = pygame.display.set_mode(screen_size)
+lower_bound                 = 350
+upper_bound                 = 0
+player_1_y                  = 150
+player_1_x                  = 20
+player_1_up                 = pygame.K_w
+player_1_down               = pygame.K_s
+player_1_score              = 0
+player_2_y                  = 150
+player_2_x                  = 760
+player_2_up                 = pygame.K_UP
+player_2_down               = pygame.K_DOWN
+player_2_score              = 0
+ball_x                      = 375
+ball_y                      = 235
+ball_speed                  = 9
+ball_speed_y                = 9
+running                     = False
+FPS                         = 50
+fpsClock                    = pygame.time.Clock()
+player_move_units           = 50
+start                       = False
+font                        = pygame.font.Font(None, 60)
+score_font                  = pygame.font.Font(None, 160)
+clock                       = pygame.time.Clock()
+starting_text               = font.render("Press any button to start", True, (255, 255, 255))
+fullscreen_reminder         = font.render("Press ctrl to toggle fullscreen", True, (255, 255, 255))
+text_rect_starter           = starting_text.get_rect(center=(400, 400))
+text_rect_reminder          = fullscreen_reminder.get_rect(center=(400, 450))
+player_1_score_text         = score_font.render(f"{player_1_score}", True, (128, 128, 128))
+player_2_score_text         = score_font.render(f"{player_2_score}", True, (128, 128, 128))
+text_player_2_score_text    = player_2_score_text.get_rect(center=(900, 50))
+text_player_1_score_text    = player_1_score_text.get_rect(center=(400, 50))
+ball_start_side             = random.randint(1, 2)
+title_screen                = True
+pong_title_screen_text      = font.render("PONG", True, (255, 255, 255))
+text_rect_title_screen      = pong_title_screen_text.get_rect(center = (400,100))
+start                       = font.render("start", True, (255, 255, 255))
+rect_start                  = pong_title_screen_text.get_rect(center = (400,200))
+how_to                      = font.render("PONG", True, (255, 255, 255))
+how_to_rect                 = pong_title_screen_text.get_rect(center = (400,100))
+title_option                = 1
+player_selection_y          = 200
+title_op_1                  = font.render("Start Game", True, (255, 255, 255))
+title_op_2                  = font.render("Information", True, (255, 255, 255))
+title_op_3                  = font.render("Quit Game", True, (255, 255, 255))
+info_controls_p1            = font.render("Player 1 movement: w and s", True, (255, 255, 255))
+info_controls_p2            = font.render("Player 2 movement: up and down", True, (255, 255, 255))
+info_controls_quit          = font.render("Press esc to quit", True, (255, 255, 255))
+player_1_score_text         = score_font.render(f"{player_1_score}", True, (128, 128, 128))
+player_2_score_text         = score_font.render(f"{player_2_score}", True, (128, 128, 128))
+text_player_2_score_text    = player_2_score_text.get_rect(center=(900, 50))
+text_player_1_score_text    = player_1_score_text.get_rect(center=(400, 50))
+info_screen                 = False
 screen.fill(BLACK)
 pygame.display.set_caption("Pong")
-lower_bound = 350
-upper_bound = 0
-player_1_y = 150
-player_1_x = 20
-player_1_up = pygame.K_w
-player_1_down = pygame.K_s
-player_1_score = 0
-player_2_y = 150
-player_2_x = 760
-player_2_up = pygame.K_UP
-player_2_down = pygame.K_DOWN
-player_2_score = 0
-ball_x = 375
-ball_y = 235
-ball_speed = 9
-ball_speed_y = 9
-running = False
-FPS = 50
-fpsClock = pygame.time.Clock()
-player_move_units = 50
-start = False
-font = pygame.font.Font(None, 60)
-score_font = pygame.font.Font(None, 160)
-clock = pygame.time.Clock()
-starting_text = font.render("Press any button to start", True, (255, 255, 255))
-fullscreen_reminder = font.render("Press ctrl to toggle fullscreen", True, (255, 255, 255))
-text_rect_starter = starting_text.get_rect(center=(400, 400))
-text_rect_reminder = fullscreen_reminder.get_rect(center=(400, 450))
-player_1_score_text = score_font.render(f"{player_1_score}", True, (128, 128, 128))
-player_2_score_text = score_font.render(f"{player_2_score}", True, (128, 128, 128))
-text_player_2_score_text = player_2_score_text.get_rect(center=(900, 50))
-text_player_1_score_text = player_1_score_text.get_rect(center=(400, 50))
-ball_start_side = random.randint(1, 2)
 if ball_start_side == 1:
     player_turn = "left"
 elif ball_start_side == 2:
@@ -52,22 +72,6 @@ if ball_start_angle == 1:
     ball_y_direction = "down"
 elif ball_start_angle == 2:
     ball_y_direction = "up"
-title_screen = True
-pong_title_screen_text = font.render("PONG", True, (255, 255, 255))
-text_rect_title_screen = pong_title_screen_text.get_rect(center = (400,100))
-start = font.render("start", True, (255, 255, 255))
-rect_start = pong_title_screen_text.get_rect(center = (400,200))
-how_to = font.render("PONG", True, (255, 255, 255))
-how_to_rect = pong_title_screen_text.get_rect(center = (400,100))
-title_option = 1
-player_selection_y = 200
-title_op_1 = font.render("Start Game", True, (255, 255, 255))
-title_op_2 = font.render("Information", True, (255, 255, 255))
-title_op_3 = font.render("Quit Game", True, (255, 255, 255))
-info_controls_p1 = font.render("Player 1 movement: w and s", True, (255, 255, 255))
-info_controls_p2 = font.render("Player 2 movement: up and down", True, (255, 255, 255))
-info_controls_quit = font.render("Press esc to quit", True, (255, 255, 255))
-info_screen = False
 
 # Title Screen
 while title_screen == True:
@@ -127,10 +131,6 @@ pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
 pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
 pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
 pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
-player_1_score_text = score_font.render(f"{player_1_score}", True, (128, 128, 128))
-player_2_score_text = score_font.render(f"{player_2_score}", True, (128, 128, 128))
-text_player_2_score_text = player_2_score_text.get_rect(center=(900, 50))
-text_player_1_score_text = player_1_score_text.get_rect(center=(400, 50))
 screen.blit(starting_text, text_rect_starter)
 screen.blit(fullscreen_reminder, text_rect_reminder)
 pygame.display.flip()
