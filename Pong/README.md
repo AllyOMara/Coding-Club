@@ -3,9 +3,8 @@
 
 
 Main Features
-- Two Players, movable within a boundary
-- The players are given a boundary
-- A ball, movable within a boundary
+- Two Players, movable within a given boundary
+- A ball, movable within the same boundary
 - The ball is interactable
 - Scoring system
 - Title screen
@@ -15,5 +14,5 @@ Extra
 - Random initial ball movement
 - Requires the pressing of a key to start
 - Fullscreen toggled using left ctrl
-- Text added to indicate the preceding two points are available
+- Ball moves based on where it hits the player
 <br><br>
