@@ -228,8 +228,8 @@ while running:
         # Collision with players
         if player_turn == "left":
             if ball_x > 0:
-                if 20 <= ball_x <= 40 and player_1_y <= ball_y <= player_1_y + 150:
-                    if player_1_y <= ball_y < player_1_y + 50:
+                if 20 <= ball_x <= 40 and player_1_y - 30 <= ball_y <= player_1_y + 150:
+                    if player_1_y - 30 <= ball_y < player_1_y + 50:
                         ball_y_direction    = "up"
                         ball_speed_y        = random.randint(5,8)
                     elif player_1_y + 50 <= ball_y <= player_1_y + 100:
@@ -253,8 +253,8 @@ while running:
             else:
                 begin_game  = True
         elif player_turn == "right":
-            if 730 <= ball_x <= 750 and player_2_y <= ball_y <= player_2_y + 150:
-                if player_2_y <= ball_y < player_2_y + 50:
+            if 730 <= ball_x <= 750 and player_2_y - 30 <= ball_y <= player_2_y + 150:
+                if player_2_y - 30 <= ball_y < player_2_y + 50:
                     ball_y_direction    = "up"
                     ball_speed_y        = random.randint(5,8)
                 elif player_2_y + 50 <= ball_y <= player_2_y + 100:
