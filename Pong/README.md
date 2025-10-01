@@ -8,6 +8,7 @@ Main Features
 - A ball, movable within a boundary
 - The ball is interactable
 - Scoring system
+- Title screen
 <br><br>
 
 Extra
@@ -16,7 +17,3 @@ Extra
 - Fullscreen toggled using left ctrl
 - Text added to indicate the preceding two points are available
 <br><br>
-
-TO DO [EXTRA]
-- Add title screen
-- Add introduction screen (maybe)
