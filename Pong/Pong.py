@@ -61,17 +61,17 @@ player_2_score_text         = score_font.render(f"{player_2_score}", True, (128,
 text_player_2_score_text    = player_2_score_text.get_rect(center=(900, 50))
 text_player_1_score_text    = player_1_score_text.get_rect(center=(400, 50))
 info_screen                 = False
+ball_start_angle            = random.randint(1, 2)
 screen.fill(BLACK)
 pygame.display.set_caption("Pong")
-if ball_start_side == 1:
-    player_turn = "left"
-elif ball_start_side == 2:
-    player_turn = "right"
-ball_start_angle = random.randint(1, 2)
-if ball_start_angle == 1:
-    ball_y_direction = "down"
-elif ball_start_angle == 2:
-    ball_y_direction = "up"
+if ball_start_side      == 1:
+    player_turn         = "left"
+elif ball_start_side    == 2:
+    player_turn         = "right"
+if ball_start_angle     == 1:
+    ball_y_direction    = "down"
+elif ball_start_angle   == 2:
+    ball_y_direction    = "up"
 
 # Title Screen
 while title_screen == True:
@@ -113,8 +113,8 @@ while title_screen == True:
                 title_option = title_option + 1
             elif event.key == pygame.K_z or pygame.K_SPACE or pygame.K_RETURN:
                 if title_option == 1:
-                    title_screen = False
-                    start = False
+                    title_screen    = False
+                    start           = False
                 elif title_option == 2 and info_screen == False:
                     info_screen = True
                 elif title_option == 2 and info_screen == True:
@@ -122,8 +122,8 @@ while title_screen == True:
                 elif title_option == 3:
                     pygame.quit()
             else:
-                title_screen = False
-                start = False
+                title_screen    = False
+                start           = False
     
 # Main Menu
 screen.fill(BLACK)
@@ -148,7 +148,6 @@ while start == False:
                 pygame.display.toggle_fullscreen()
                 screen.fill(BLACK)
                 pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
-                clock = pygame.time.Clock()
                 pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
                 pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
                 pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
@@ -156,7 +155,7 @@ while start == False:
                 screen.blit(fullscreen_reminder, text_rect_reminder)
                 pygame.display.flip()
             else:
-                start = True
+                start   = True
                 running = True
 begin_game = True
 
@@ -174,7 +173,6 @@ while running:
                         pygame.display.toggle_fullscreen()
                         screen.fill(BLACK)
                         pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
-                        clock = pygame.time.Clock()
                         pygame.draw.rect(screen, WHITE, (player_1_x, player_1_y, 20, 150))
                         pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
                         pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
@@ -219,54 +217,54 @@ while running:
             if ball_y > 0:
                 ball_y = ball_y - ball_speed_y
             elif ball_y <= 0:
-                ball_y = ball_y + ball_speed_y
-                ball_y_direction = "down"
+                ball_y              = ball_y + ball_speed_y
+                ball_y_direction    = "down"
         elif ball_y_direction == "down":
             if ball_y < 470:
                 ball_y = ball_y + ball_speed_y
             elif ball_y >= 470:
-                ball_y = ball_y - ball_speed_y
-                ball_y_direction = "up"
+                ball_y              = ball_y - ball_speed_y
+                ball_y_direction    = "up"
         # Collision with players
         if player_turn == "left":
             if ball_x > 0:
                 if 20 <= ball_x <= 40 and player_1_y <= ball_y <= player_1_y + 150:
                     if player_1_y <= ball_y < player_1_y + 50:
-                        ball_y_direction = "up"
-                        ball_speed_y = random.randint(5,8)
+                        ball_y_direction    = "up"
+                        ball_speed_y        = random.randint(5,8)
                     elif player_1_y + 50 <= ball_y <= player_1_y + 100:
                         ball_speed_y = random.randint(5,8)
                     elif player_1_y + 100 < ball_y <= player_1_y + 150:
-                        ball_y_direction = "down"
-                        ball_speed_y = random.randint(5,8)
-                    ball_speed = 17 - ball_speed_y
+                        ball_y_direction    = "down"
+                        ball_speed_y        = random.randint(5,8)
+                    ball_speed  = 17 - ball_speed_y
                     player_turn = "right"
                 else:
                     ball_x = ball_x - ball_speed
             elif ball_x <= 0:
                 player_2_score = player_2_score + 1
-                player_1_y = 150
-                player_1_x = 20
-                player_2_y = 150
-                player_2_x = 760
-                ball_x = 375
-                ball_y = 235
-                begin_game = False
+                player_1_y  = 150
+                player_1_x  = 20
+                player_2_y  = 150
+                player_2_x  = 760
+                ball_x      = 375
+                ball_y      = 235
+                begin_game  = False
             else:
-                begin_game = True
+                begin_game  = True
         elif player_turn == "right":
             if 730 <= ball_x <= 750 and player_2_y <= ball_y <= player_2_y + 150:
                 if player_2_y <= ball_y < player_2_y + 50:
-                    ball_y_direction = "up"
-                    ball_speed_y = random.randint(5,8)
+                    ball_y_direction    = "up"
+                    ball_speed_y        = random.randint(5,8)
                 elif player_2_y + 50 <= ball_y <= player_2_y + 100:
                     ball_speed_y = random.randint(5,8)
                 elif player_2_y + 100 < ball_y <= player_2_y + 150:
-                    ball_y_direction = "down"
-                    ball_speed_y = random.randint(5,8)
-                ball_speed = 17 - ball_speed_y
+                    ball_y_direction    = "down"
+                    ball_speed_y        = random.randint(5,8)
+                ball_speed  = 17 - ball_speed_y
                 player_turn = "left"
-                ball_x = ball_x - ball_speed
+                ball_x      = ball_x - ball_speed
             if ball_x < 770:
                 if 730 <= ball_x <= 750 and player_2_y - 15 <= ball_y <= player_2_y + 150:
                     random_ball_movement_x = random.randint(1, 2)
@@ -274,28 +272,28 @@ while running:
                         ball_y_direction = "up"
                     elif random_ball_movement_x == 2:
                         ball_y_direction = "down"
-                    ball_speed_y = random.randint(1,10)
-                    ball_speed = 17 - ball_speed_y
-                    player_turn = "left"
-                    ball_x = ball_x - ball_speed
+                    ball_speed_y    = random.randint(1,10)
+                    ball_speed      = 17 - ball_speed_y
+                    player_turn     = "left"
+                    ball_x          = ball_x - ball_speed
                 else:
                     ball_x = ball_x + ball_speed
             else:
                 player_1_score = player_1_score + 1
-                player_1_y = 150
-                player_1_x = 20
-                player_2_y = 150
-                player_2_x = 760
-                ball_x = 375
-                ball_y = 235
-                begin_game = False
+                player_1_y  = 150
+                player_1_x  = 20
+                player_2_y  = 150
+                player_2_x  = 760
+                ball_x      = 375
+                ball_y      = 235
+                begin_game  = False
         # New frame
         screen.fill(BLACK)
         pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
-        player_1_score_text = score_font.render(f"{player_1_score}", True, (128, 128, 128))
-        player_2_score_text = score_font.render(f"{player_2_score}", True, (128, 128, 128))
-        text_player_2_score_text = starting_text.get_rect(center=(900, 50))
-        text_player_1_score_text = fullscreen_reminder.get_rect(center=(400, 50))
+        player_1_score_text         = score_font.render(f"{player_1_score}", True, (128, 128, 128))
+        player_2_score_text         = score_font.render(f"{player_2_score}", True, (128, 128, 128))
+        text_player_2_score_text    = starting_text.get_rect(center=(900, 50))
+        text_player_1_score_text    = fullscreen_reminder.get_rect(center=(400, 50))
         screen.blit(player_1_score_text, text_player_1_score_text)
         screen.blit(player_2_score_text, text_player_2_score_text)
         pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
