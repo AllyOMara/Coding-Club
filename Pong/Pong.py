@@ -90,7 +90,7 @@ while title_screen == True:
         screen.blit(info_controls_p2, (25, 200))
         screen.blit(info_controls_quit, (25, 300))
         pygame.display.flip()
-    # Choosing menu options
+    # Choosing Menu Options
     for event in pygame.event.get():
         if title_option == 1:
             player_selection_y = 200
@@ -143,7 +143,7 @@ while start == False:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
-            # Toggle fullscreen
+            # Toggle Fullscreen
             elif event.key == pygame.K_LCTRL:
                 pygame.display.toggle_fullscreen()
                 screen.fill(BLACK)
@@ -159,9 +159,9 @@ while start == False:
                 running = True
 begin_game = True
 
-# Game loop
+# Game Loop
 while running:
-    # Between rounds
+    # Between Rounds
     while begin_game == False:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -191,7 +191,7 @@ while running:
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
-                # Player movement
+                # Player Movement
                 if event.key == player_1_up:
                     if player_1_y < upper_bound:
                         player_1_y == player_1_y
@@ -225,7 +225,7 @@ while running:
             elif ball_y >= 470:
                 ball_y              = ball_y - ball_speed_y
                 ball_y_direction    = "up"
-        # Collision with players
+        # Collision With Player 1
         if player_turn == "left":
             if ball_x > 0:
                 if 20 <= ball_x <= 40 and player_1_y - 30 <= ball_y <= player_1_y + 150:
@@ -252,6 +252,7 @@ while running:
                 begin_game  = False
             else:
                 begin_game  = True
+        # Collision With Player 2
         elif player_turn == "right":
             if 730 <= ball_x <= 750 and player_2_y - 30 <= ball_y <= player_2_y + 150:
                 if player_2_y - 30 <= ball_y < player_2_y + 30:
@@ -287,7 +288,7 @@ while running:
                 ball_x      = 375
                 ball_y      = 235
                 begin_game  = False
-        # New frame
+        # New Frame
         screen.fill(BLACK)
         pygame.draw.rect(screen, GREY, (385, 0, 10, 500))
         player_1_score_text         = score_font.render(f"{player_1_score}", True, (128, 128, 128))
