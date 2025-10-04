@@ -22,8 +22,8 @@ player_2_down               = pygame.K_DOWN
 player_2_score              = 0
 ball_x                      = 375
 ball_y                      = 235
-ball_speed_x                = 11
-ball_speed_y                = 6
+ball_speed_x                = 11 # This is kept constant to ensure equal timing between each hit
+ball_speed_y                = 6 # This is changed to vary gameplay (randomly generated)
 running                     = False
 FPS                         = 50
 fpsClock                    = pygame.time.Clock()
@@ -61,7 +61,7 @@ player_2_score_text         = score_font.render(f"{player_2_score}", True, (128,
 text_player_2_score_text    = player_2_score_text.get_rect(center=(900, 50))
 text_player_1_score_text    = player_1_score_text.get_rect(center=(400, 50))
 info_screen                 = False
-ball_start_angle            = random.randint(1, 2)
+ball_start_angle            = random.randint(1, 2) # For variation at the beginning of the game
 pygame.display.set_caption("Pong")
 if ball_start_side      == 1:
     player_turn         = "left"
@@ -133,7 +133,6 @@ pygame.draw.rect(screen, WHITE, (player_2_x, player_2_y, 20, 150))
 pygame.draw.rect(screen, WHITE, (ball_x, ball_y , 30, 30))
 screen.blit(starting_text, text_rect_starter)
 screen.blit(fullscreen_reminder, text_rect_reminder)
-pygame.display.flip()
 pygame.display.flip()
 fpsClock.tick(FPS)
 while start == False:
