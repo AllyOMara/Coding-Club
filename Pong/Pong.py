@@ -231,12 +231,12 @@ while running:
                 if 20 <= ball_x <= 40 and player_1_y - 30 <= ball_y <= player_1_y + 150:
                     if player_1_y - 30 <= ball_y < player_1_y + 30:
                         ball_y_direction    = "up"
-                        ball_speed_y        = random.randint(5,8)
+                        ball_speed_y        = random.randint(6,9)
                     elif player_1_y + 30 <= ball_y <= player_1_y + 90:
-                        ball_speed_y = random.randint(2,3)
+                        ball_speed_y = random.randint(1,4)
                     elif player_1_y + 90 < ball_y <= player_1_y + 150:
                         ball_y_direction    = "down"
-                        ball_speed_y        = random.randint(5,8)
+                        ball_speed_y        = random.randint(6,9)
                     player_turn = "right"
                 else:
                     ball_x = ball_x - ball_speed_x
@@ -256,12 +256,12 @@ while running:
             if 730 <= ball_x <= 750 and player_2_y - 30 <= ball_y <= player_2_y + 150:
                 if player_2_y - 30 <= ball_y < player_2_y + 30:
                     ball_y_direction    = "up"
-                    ball_speed_y        = random.randint(5,8)
+                    ball_speed_y        = random.randint(6,9)
                 elif player_2_y + 30 <= ball_y <= player_2_y + 90:
-                    ball_speed_y = random.randint(1,3)
+                    ball_speed_y = random.randint(1,4)
                 elif player_2_y + 90 < ball_y <= player_2_y + 150:
                     ball_y_direction    = "down"
-                    ball_speed_y        = random.randint(5,8)
+                    ball_speed_y        = random.randint(6,9)
                 player_turn = "left"
                 ball_x      = ball_x - ball_speed_x
             if ball_x < 770:
