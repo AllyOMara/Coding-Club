@@ -3,7 +3,7 @@ import random
 
 # Setup
 pygame.init()
-BLACK                       = (0, 0, 0) 
+BLACK                       = (0, 0, 0)
 WHITE                       = (255, 255, 255)
 GREY                        = (128, 128, 128)
 screen_size                 = (800, 500)
@@ -22,8 +22,8 @@ player_2_down               = pygame.K_DOWN
 player_2_score              = 0
 ball_x                      = 375
 ball_y                      = 235
-ball_speed                  = 9
-ball_speed_y                = 9
+ball_speed_x                = 11
+ball_speed_y                = 6
 running                     = False
 FPS                         = 50
 fpsClock                    = pygame.time.Clock()
@@ -62,7 +62,6 @@ text_player_2_score_text    = player_2_score_text.get_rect(center=(900, 50))
 text_player_1_score_text    = player_1_score_text.get_rect(center=(400, 50))
 info_screen                 = False
 ball_start_angle            = random.randint(1, 2)
-screen.fill(BLACK)
 pygame.display.set_caption("Pong")
 if ball_start_side      == 1:
     player_turn         = "left"
@@ -72,6 +71,7 @@ if ball_start_angle     == 1:
     ball_y_direction    = "down"
 elif ball_start_angle   == 2:
     ball_y_direction    = "up"
+screen.fill(BLACK)
 
 # Title Screen
 while title_screen == True:
@@ -233,14 +233,13 @@ while running:
                         ball_y_direction    = "up"
                         ball_speed_y        = random.randint(5,8)
                     elif player_1_y + 30 <= ball_y <= player_1_y + 90:
-                        ball_speed_y = random.randint(1,3)
+                        ball_speed_y = random.randint(2,3)
                     elif player_1_y + 90 < ball_y <= player_1_y + 150:
                         ball_y_direction    = "down"
                         ball_speed_y        = random.randint(5,8)
-                    ball_speed  = 17 - ball_speed_y
                     player_turn = "right"
                 else:
-                    ball_x = ball_x - ball_speed
+                    ball_x = ball_x - ball_speed_x
             elif ball_x <= 0:
                 player_2_score = player_2_score + 1
                 player_1_y  = 150
@@ -263,9 +262,8 @@ while running:
                 elif player_2_y + 90 < ball_y <= player_2_y + 150:
                     ball_y_direction    = "down"
                     ball_speed_y        = random.randint(5,8)
-                ball_speed  = 17 - ball_speed_y
                 player_turn = "left"
-                ball_x      = ball_x - ball_speed
+                ball_x      = ball_x - ball_speed_x
             if ball_x < 770:
                 if 730 <= ball_x <= 750 and player_2_y - 15 <= ball_y <= player_2_y + 150:
                     random_ball_movement_x = random.randint(1, 2)
@@ -274,11 +272,10 @@ while running:
                     elif random_ball_movement_x == 2:
                         ball_y_direction = "down"
                     ball_speed_y    = random.randint(1,10)
-                    ball_speed      = 17 - ball_speed_y
                     player_turn     = "left"
-                    ball_x          = ball_x - ball_speed
+                    ball_x          = ball_x - ball_speed_x
                 else:
-                    ball_x = ball_x + ball_speed
+                    ball_x = ball_x + ball_speed_x
             else:
                 player_1_score = player_1_score + 1
                 player_1_y  = 150
