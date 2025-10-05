@@ -1,8 +1,19 @@
 ***<h1>"Pong, recreated in Pygame</h1>***
 <br>
 
+## Overview<br>
+Pong in Pygame is a two player recreation of the original Pong game, coded in Python.
+<br>
+<br>
 
-<h2>Main Features</h2>
+## Controls
+- Player 1 moves using "w" and "s"
+- Player 2 moves using "up" and "down" arrow keys
+- Fulscreen is toggled using left ctrl
+- Quit using esc or pressing the close button
+<br>
+
+## Main Features
 - Two Players, movable within a given boundary
 - A ball, movable within the same boundary
 - The ball is interactable
@@ -10,7 +21,7 @@
 - Title screen
 <br><br>
 
-<h2>Extra</h2>
+## Extra Features
 - Random initial ball movement
 - Requires the pressing of a key to start
 - Fullscreen toggled using left ctrl
