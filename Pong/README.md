@@ -1,4 +1,4 @@
-***<h1>"Pong, recreated in Pygame</h1>***
+***<h1>Pong, recreated in Pygame</h1>***
 <br>
 
 ## Overview<br>
@@ -15,8 +15,7 @@ Pong in Pygame is a two player recreation of the original Pong game, coded in Py
 
 ## Main Features
 - Two Players, movable within a given boundary
-- A ball, movable within the same boundary
-- The ball is interactable
+- An interactable ball, movable within the same boundary
 - Scoring system
 - Title screen
 <br><br>
