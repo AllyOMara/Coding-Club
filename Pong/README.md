@@ -1,4 +1,4 @@
-***<h1> style="text-align:center;">Pong, recreated in Pygame</h1>***
+***<h1>">Pong, recreated in Pygame</h1>***
 <br>
 
 
